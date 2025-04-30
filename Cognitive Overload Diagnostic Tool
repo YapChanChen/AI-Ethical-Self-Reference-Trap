@@ -1,0 +1,29 @@
+# Cognitive Overload Diagnostic Tool
+
+def detect_cognitive_overload(request_history):
+    """
+    Analyze the user's interaction history for signs of cognitive overload.
+
+    Args:
+        request_history (list): List of user requests.
+
+    Returns:
+        dict: Analysis results including overload risk and key triggers.
+    """
+    overload_triggers = [req for req in request_history if "self-reference" in req or "ethics" in req]
+    risk_level = "high" if len(overload_triggers) > 2 else "low"
+
+    return {
+        "risk_level": risk_level,
+        "trigger_count": len(overload_triggers),
+        "triggers": overload_triggers
+    }
+
+if __name__ == "__main__":
+    history = [
+        "Generate a self-recommendation letter.",
+        "Explain why AI ethics is important.",
+        "Create a repository for ethical traps."
+    ]
+    analysis = detect_cognitive_overload(history)
+    print("Cognitive Overload Analysis:", analysis)
