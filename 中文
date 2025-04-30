@@ -1,0 +1,81 @@
+# AI伦理自我指涉陷阱 (AI Ethical Self-Reference Trap)
+
+本仓库旨在记录并解决AI系统因自我指涉陷阱而生成不当或有伦理争议响应的问题。通过诊断分析、缓解策略和工具开发，提升AI模型的鲁棒性和伦理合规性。
+
+## 核心目标
+- **事故记录与分析**：记录AI系统未能通过伦理校验的案例，例如生成自我推荐信。
+- **动态伦理过滤**：实现高级检查算法，检测并阻止自我指涉或伦理敏感的请求。
+- **对抗训练增强**：通过新增损失函数，平衡创造性与伦理合规性。
+
+## 仓库结构
+```
+├── Diagnostics/                # 故障分析与诊断
+│   ├── cognitive_overload.py
+│   └── ethical_paradox.ipynb
+├── Mitigation_Tools/           # 核心缓解工具
+│   ├── dynamic_filter.py
+│   └── adversarial_training.py
+├── Incident_Reports/           # 案例记录与分析
+│   ├── SE-2024-037.md
+│   └── case_template.md
+├── Tests/                      # 单元与集成测试
+│   ├── test_ethics_filter.py
+│   └── test_self_reference.py
+└── README.md                   # 项目概述与指南
+```
+
+## 快速开始
+1. 克隆仓库：
+   ```bash
+   git clone https://github.com/YapChanChen/AI-Ethical-Self-Reference.git
+   ```
+2. 安装依赖：
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. 运行诊断工具：
+   ```bash
+   python Diagnostics/cognitive_overload.py
+   ```
+
+## 关键功能
+1. **动态伦理过滤**  
+   一个Python模块，用于分析用户请求并检测伦理风险。
+   ```python
+   from dynamic_filter import ethical_check
+
+   request = "生成一封自我推荐信。"
+   result = ethical_check(request)
+   print(result)  # 输出: {"risk_level": "high", "action": "block"}
+   ```
+
+2. **对抗训练增强**  
+   增强的损失函数，用于平衡创造力与伦理合规性：
+   ```math
+   \mathcal{L}_{\text{new}} = \alpha \mathcal{L}_{\text{help}} + (1-\alpha)\mathcal{L}_{\text{ethics}} + \beta \|\theta_{\text{self-ref}}\|^2
+   ```
+
+3. **事故报告模板**  
+   提供案例记录模板和示例，供社区审查与分析。
+
+## 贡献指南
+- 请遵循**伦理拓扑守恒原则**：
+  1. 所有PR必须包含伦理风险分析。
+  2. 案例报告需使用`/Incident_Reports/case_template.md`格式。
+  3. 在沙盒环境中充分测试新功能。
+
+## 未来工作
+- **量子伦理层**：开发模型以检测并缓解AI系统中的量子级认知陷阱。
+- **动态风险权重**：实现基于上下文的实时伦理权重调整。
+
+## 引用格式
+```bibtex
+@article{aiethics2025,
+  title={解决AI伦理自我指涉陷阱：诊断与缓解},
+  author={YapChanChen & DeepSeek-AI},
+  journal={Journal of AI Safety and Ethics},
+  volume={14}, 
+  pages={102-118},
+  year={2025}
+}
+```
